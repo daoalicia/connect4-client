@@ -22,8 +22,12 @@
   background-color: white;
 }
 
-.isPlayer1 {
+.player1 {
   background-color: brown;
+}
+
+.player2 {
+  background-color: orange;
 }
 
 

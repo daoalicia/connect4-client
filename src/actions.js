@@ -10,7 +10,7 @@ export function loadCellInfo(cell) {
     };
 }
 
-export function makeMove(cell) {
+export function makeMove(cell, isCurrentPlayer1) {
     return {
         type: Action.MakeMove,
         payload: cell,
@@ -40,3 +40,4 @@ export function loadTable() {
         .catch(e => console.error(e));
     };
 }
+

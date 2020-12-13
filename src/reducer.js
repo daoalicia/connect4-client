@@ -15,8 +15,15 @@ function reducer(state = initialState, action) {
             //console.log("make a move");
             return {
                 ...state,
+                // this is just for updating the databasw
                 cells: state.cells.map(cell => {
-                    return cell;
+                    if (cell.id === action.payload.id && cell.currentPlayer === 1) {
+                        return {...cell, isPlayer1: 1};
+                    } else if (cell.id === action.payload.id && cell.currentPlayer === 2) {
+                        return {...cell, isPlayer1: 2};
+                    } else {
+                        return cell;
+                    }
                 }),
             };
         default:
