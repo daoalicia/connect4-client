@@ -10,9 +10,17 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 cells: action.payload,
-            }
+            };
+        case Action.MakeMove:
+            //console.log("make a move");
+            return {
+                ...state,
+                cells: state.cells.map(cell => {
+                    return cell;
+                }),
+            };
         default:
-            return state;
+           return state;
     }
 }
 

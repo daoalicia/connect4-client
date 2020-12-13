@@ -1,10 +1,18 @@
 export const Action = Object.freeze({
   LoadCellInfo: 'LoadCellInfo',
+  MakeMove: 'MakeMove',
 });
 
 export function loadCellInfo(cell) {
     return {
         type: Action.LoadCellInfo,
+        payload: cell,
+    };
+}
+
+export function makeMove(cell) {
+    return {
+        type: Action.MakeMove,
         payload: cell,
     };
 }

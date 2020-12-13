@@ -12,10 +12,15 @@ function App() {
     dispatch(loadTable())
   }, [dispatch]);
 
+  const inGame = () => {
+    document.getElementById('board').style.display('block');
+  }
+
   return (
     <div className="App">
       <h1>Connect 4 Game</h1>
-      <div className="board">
+      <button onClick={inGame}>Start New Game</button>
+      <div id="board">
         {cells.map(cell => <Cell key={cell.id} cell={cell} />)}
       </div>
     </div>
