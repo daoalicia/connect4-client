@@ -56,6 +56,7 @@ function App() {
               <div>
                 <h1>Connect 4 Game</h1>
                 <h3>Current Turn: {playerName}</h3>
+                <div id="instructions">To make a move, click on a white circle in the column you want to drop your token.</div>
                 <div id="play" onClick={togglePlayer}>
                   <Play cell={cells} player={player} />
                 </div>
