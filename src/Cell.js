@@ -18,23 +18,6 @@ export function Cell(props) {
 
     // onPlay make a move
     const onPlay = () => {
-        // if (dropToken() === 1) {
-        //     dispatch(makeMove({
-        //         id: cell.id,
-        //         rowNum: cell.rowNum,
-        //         colNum: cell.colNum,
-        //         isPlayer1: cell.isPlayer1,
-        //         isPlayer2: cell.isPlayer2,
-        //     }, currPlayer));
-        // } else if (dropToken() === 0) {
-        //         dispatch(makeMove({
-        //             id: cell.id,
-        //             rowNum: cell.rowNum + 1,
-        //             colNum: cell.colNum,
-        //             isPlayer1: cell.isPlayer1,
-        //             isPlayer2: cell.isPlayer2,
-        //         }, currPlayer));
-        // }
         dispatch(makeMove({
             id: cell.id,
             rowNum: cell.rowNum + 1,
