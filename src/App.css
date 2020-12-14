@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .App {
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
+  background-color: #FFC75F;
+  height: 100vh;
+}
+
+#root {
+  width:auto;
+  height: 100%;
 }
 
 .board {
@@ -39,8 +48,16 @@
   width: 300px;
   list-style-type: none;
   text-align: left;
-  padding-left: 5px;
-  border: 2px solid black;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 2em;
+  background-color: #383856;
+}
+
+li {
+  color: white;
 }
 
 #game-mode > label {
@@ -57,4 +74,46 @@
 .player-info > input[type="text"] {
   margin-right: 3px;
   padding-left: 10px;
+}
+
+.button-r {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 2em;
+  background-color: #202033;
+}
+
+.orange {
+  color: #d1513b;
+}
+
+.decor {
+  background-color: #C34A36; 
+  border: none;
+  border-radius: 2em;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+input, label {
+  padding-right: 10px;
+  color: white;
+}
+
+.label2 {
+  font-weight: 800;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  color: #C34A36;
+}
+
+img {
+  width: 80px;
+  height: 80px;
 }
