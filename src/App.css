@@ -5,19 +5,10 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: #FFC75F;
   height: 100vh;
 }
 
 .game {
-  width: 400px;
-  height: 400px;
-  height: 100vh;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
   height: 100vh;
 }
 
@@ -28,13 +19,13 @@
   padding: 5px;
   margin-bottom: 10px;
   background-color: cornflowerblue;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
 }
 
 .cell {
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   cursor: pointer;
   border-radius: 5em;
   background-color: white;
@@ -111,7 +102,7 @@ button:disabled {
   background-color: #B0A8B9;
 }
 
-input, label {
+label {
   padding-right: 10px;
   color: white;
 }
@@ -123,6 +114,7 @@ input, label {
 h1 {
   font-family: 'Press Start 2P', cursive;
   color: #C34A36;
+  margin-top: 80px;
 }
 
 img {
@@ -130,61 +122,5 @@ img {
   height: 80px;
 }
 
-/********************* MEDIA QUERY - 620 ****************/
 
-@media only screen and (min-width:620px) {
-  .board {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    padding: 5px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    background-color: cornflowerblue;
-    width: 400px;
-    height: 400px;
-    margin-left: 100px;
-  }
-  .cell {
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-    border-radius: 5em;
-    background-color: white;
-  }
-  .game {
-    width: 600px;
-    height: 600px;
-    height: 100vh;
-  }
-}
 
-/********************* MEDIA QUERY - 900 ****************/
-
-@media only screen and (min-width:900px) {
-  .board {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    padding: 5px;
-    margin-bottom: 10px;
-    background-color: cornflowerblue;
-    width: 500px;
-    height: 500px;
-    text-align: center;
-    margin-left: 42.5px;
-    margin-top: 10px;
-  }
-  .cell {
-    height: 65px;
-    width: 65px;
-    cursor: pointer;
-    border-radius: 5em;
-    background-color: white;
-  }
-  .game {
-    width: 600px;
-    height: 600px;
-    height: 100vh;
-  }
-}
