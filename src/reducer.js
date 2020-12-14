@@ -12,7 +12,6 @@ const findLowestRow = (state, col) => {
             // if the cell is unused
             if (cell.isPlayer1 === 0 && cell.isPlayer2 === 0) {
                 if (cell.rowNum < lowestRow) {
-                    console.log(cell.rowNum);
                     lowestRow = cell.rowNum;
                 }
             }
@@ -119,7 +118,7 @@ const diagonal = (state) => {
                 return 2;
             }
         }
-        
+
     }
     return 0;
 }
@@ -132,7 +131,6 @@ function reducer(state = initialState, action) {
                 cells: action.payload,
             };
         case Action.MakeMove:
-            console.log(action.payload.cell.id);
             const col = action.payload.cell.colNum;
             const row = findLowestRow(state, col);
             return {
@@ -153,16 +151,32 @@ function reducer(state = initialState, action) {
                 }),
             };
         case Action.CheckBoard:
-            console.log("check board");
             let checkVert = vertical(state);
             let checkHor = horizontal(state);
             let checkDiag = diagonal(state);
+
             if (checkVert === 1 || checkHor === 1 || checkDiag === 1) {
                 console.log("player 1 wins");
+                return {
+                    ...state,
+                    cells: state.cells.map(cell => {
+                        return { ...cell, foundWinner: true, winner: 1 };
+                    }),
+                };
             } else if (checkVert === 2 || checkHor === 2 || checkDiag === 2) {
                 console.log("player 2 wins");
+                return {
+                    ...state,
+                    cells: state.cells.map(cell => {
+                        return { ...cell, foundWinner: true, winner: 2 };
+                    }),
+                };
+            } else {
+                return {
+                    ...state,
+                    cells: state.cells.map(cell => { return { ...cell, foundWinner: undefined }; })
+                };
             }
-            return state;
         default:
             return state;
     }

@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { checkBoard, makeMove } from './actions';
 
 export function Cell(props) {
     const cell = props.cell;
     const currPlayer = props.player;
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // onPlay make a move
     const onPlay = () => {
@@ -16,7 +18,11 @@ export function Cell(props) {
             isPlayer1: cell.isPlayer1,
             isPlayer2: cell.isPlayer2,
         }, currPlayer));
-        dispatch(checkBoard());
+        dispatch(checkBoard(cell));
+    }
+
+    if (cell.foundWinner) {
+        history.push(`/winner/${cell.winner}`);
     }
 
     if (cell.isPlayer1 === 1) {

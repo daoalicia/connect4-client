@@ -18,9 +18,10 @@ export function makeMove(cell, currPlayer) {
     };
 }
 
-export function checkBoard() {
+export function checkBoard(cell) {
     return {
         type: Action.CheckBoard,
+        payload: cell,
     }
 }
 

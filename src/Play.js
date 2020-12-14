@@ -6,7 +6,7 @@ import { Cell } from './Cell';
 export function Play(props) {
     const cells = props.cell;
     const currPlayer = props.player;
-    
+
     const history = useHistory();
 
     const endGame = () => {

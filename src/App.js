@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadTable } from './actions';
 import { NewGame } from './NewGame';
 import { Play } from './Play';
+import { WinGame } from './WinGame';
 
 function App() {
   const cells = useSelector(state => state.cells);
@@ -57,7 +58,18 @@ function App() {
               </div>
             );
           }} />
-          {/* <Route exact path="/winner"></Route> */}
+          <Route exact path="/winner/:id" children={props => {
+            let id = parseInt(props.match.params.id);
+            if (id === 1) {
+              return (
+                <WinGame cell={cells} winner={player1} />
+              );
+            } else {
+              return (
+                <WinGame cell={cells} winner={player2} />
+              );
+            }
+          }} />
           <Redirect to="/new" />
         </Switch>
       </BrowserRouter>
