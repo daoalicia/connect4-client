@@ -1,30 +1,22 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { makeMove } from './actions';
+import { checkBoard, makeMove } from './actions';
 
 export function Cell(props) {
     const cell = props.cell;
     const currPlayer = props.player;
     const dispatch = useDispatch();
 
-
-    const dropToken = () => {
-        if (cell.isPlayer1 === 0 && cell.isPlayer2 === 0) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
     // onPlay make a move
     const onPlay = () => {
         dispatch(makeMove({
             id: cell.id,
-            rowNum: cell.rowNum + 1,
+            rowNum: cell.rowNum,
             colNum: cell.colNum,
             isPlayer1: cell.isPlayer1,
             isPlayer2: cell.isPlayer2,
         }, currPlayer));
+        dispatch(checkBoard());
     }
 
     if (cell.isPlayer1 === 1) {
@@ -37,7 +29,7 @@ export function Cell(props) {
         );
     } else {
         return (
-            <div onClick={onPlay} className="cell">{cell.colNum} {cell.rowNum}</div>
+            <div onClick={onPlay} className="cell"></div>
         );
     }
 

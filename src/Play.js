@@ -11,6 +11,7 @@ export function Play(props) {
 
     const endGame = () => {
         history.push(`/new`);
+        window.location.reload();
     };
 
     return (

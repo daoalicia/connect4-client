@@ -7,7 +7,7 @@ export function NewGame(props) {
     const [gameMode, setGameMode] = useState(true);
     // default to single player
     const [player1Name, setPlayer1Name] = useState('single');
-    const [player2Name, setPlayer2Name] = useState(' ');
+    const [player2Name, setPlayer2Name] = useState('player');
 
     const startNewGame = () => {
         history.push(`/play/${player1Name}/${player2Name}`);

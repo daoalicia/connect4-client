@@ -1,6 +1,7 @@
 export const Action = Object.freeze({
   LoadCellInfo: 'LoadCellInfo',
   MakeMove: 'MakeMove',
+  CheckBoard: 'CheckBoard',
 });
 
 export function loadCellInfo(cell) {
@@ -15,6 +16,12 @@ export function makeMove(cell, currPlayer) {
         type: Action.MakeMove,
         payload:{cell, currPlayer},
     };
+}
+
+export function checkBoard() {
+    return {
+        type: Action.CheckBoard,
+    }
 }
 
 function checkForErrors(response) {

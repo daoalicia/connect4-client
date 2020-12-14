@@ -12,6 +12,7 @@ const findLowestRow = (state, col) => {
             // if the cell is unused
             if (cell.isPlayer1 === 0 && cell.isPlayer2 === 0) {
                 if (cell.rowNum < lowestRow) {
+                    console.log(cell.rowNum);
                     lowestRow = cell.rowNum;
                 }
             }
@@ -19,6 +20,108 @@ const findLowestRow = (state, col) => {
         return cell;
     });
     return lowestRow;
+}
+
+const vertical = (state) => {
+    let previous = 0;
+    let player1 = 0;
+    let player2 = 0;
+    let currColSet;
+    for (let col = 0; col < 7; col++) {
+        currColSet = state.cells.filter(cell => cell.colNum === col);
+        for (let i = 0; i < currColSet.length; i++) {
+            if (currColSet[i].isPlayer1 === 1 && (previous === 0 || previous === 1)) {
+                player1 = player1 + 1;
+                previous = 1;
+            } else if (currColSet[i].isPlayer2 === 1 && (previous === 0 || previous === 2)) {
+                player2 = player2 + 1;
+                previous = 2;
+            } else {
+                previous = currColSet[i].isPlayer1 === 0 ? currColSet[i].isPlayer2 : currColSet[i].isPlayer1;
+                player1 = 0;
+                player2 = 0;
+            }
+            if (player1 === 4) {
+                return 1;
+            } else if (player2 === 4) {
+                return 2;
+            }
+        }
+    }
+    return 0;
+}
+
+const horizontal = (state) => {
+    let previous = 0;
+    let player1 = 0;
+    let player2 = 0;
+    let currRowSet;
+    for (let row = 0; row < 6; row++) {
+        currRowSet = state.cells.filter(cell => cell.rowNum === row);
+        for (let i = 0; i < currRowSet.length; i++) {
+            if (currRowSet[i].isPlayer1 === 1 && (previous === 0 || previous === 1)) {
+                player1 = player1 + 1;
+                previous = 1;
+            } else if (currRowSet[i].isPlayer2 === 1 && (previous === 0 || previous === 2)) {
+                player2 = player2 + 1;
+                previous = 2;
+            } else {
+                previous = currRowSet[i].isPlayer1 === 0 ? currRowSet[i].isPlayer2 : currRowSet[i].isPlayer1;
+                player1 = 0;
+                player2 = 0;
+            }
+            if (player1 === 4) {
+                return 1;
+            } else if (player2 === 4) {
+                return 2;
+            }
+        }
+    }
+    return 0;
+}
+
+const diagonal = (state) => {
+    const diagonalSets = [
+        [4, 10, 16, 22],
+        [5, 11, 17, 23, 29],
+        [6, 12, 18, 24, 30, 36],
+        [7, 13, 19, 25, 31, 37],
+        [14, 20, 26, 32, 38],
+        [21, 27, 33, 39],
+        [4, 12, 20, 28],
+        [3, 11, 19, 27, 35],
+        [2, 10, 18, 26, 34, 42],
+        [1, 9, 17, 25, 33, 41],
+        [8, 16, 24, 32, 40],
+        [15, 23, 31, 39],
+    ]
+    let currDiagSet;
+    let previous = 0;
+    let player1 = 0;
+    let player2 = 0;
+    for (let currSet = 0; currSet < diagonalSets.length; currSet++) {
+        currDiagSet = state.cells.filter(cell => diagonalSets[currSet].includes(cell.id));
+        for (let i = 0; i < currDiagSet.length; i++) {
+            if (currDiagSet[i].isPlayer1 === 1 && (previous === 0 || previous === 1)) {
+                player1 = player1 + 1;
+                previous = 1;
+            } else if (currDiagSet[i].isPlayer2 === 1 && (previous === 0 || previous === 2)) {
+                player2 = player2 + 1;
+                previous = 2;
+            } else {
+                previous = currDiagSet[i].isPlayer1 === 0 ? currDiagSet[i].isPlayer2 : currDiagSet[i].isPlayer1;
+                player1 = 0;
+                player2 = 0;
+            }
+            if (player1 === 4) {
+                return 1;
+            } else if (player2 === 4) {
+                return 2;
+            }
+        }
+        
+    }
+    return 0;
 }
 
 function reducer(state = initialState, action) {
@@ -29,9 +132,7 @@ function reducer(state = initialState, action) {
                 cells: action.payload,
             };
         case Action.MakeMove:
-            console.log(action.payload.currPlayer);
-            console.log(action.payload.currPlayer === 1);
-            console.trace();
+            console.log(action.payload.cell.id);
             const col = action.payload.cell.colNum;
             const row = findLowestRow(state, col);
             return {
@@ -42,15 +143,26 @@ function reducer(state = initialState, action) {
                         console.log('invalid move');
                         return cell;
                     } else if (cell.colNum === action.payload.cell.colNum && cell.rowNum === row && action.payload.currPlayer === 1) {
-                        return { ...cell.id, isPlayer1: 1};
+                        return { ...cell, isPlayer1: 1 };
                     } else if (cell.colNum === action.payload.cell.colNum && cell.rowNum === row && action.payload.currPlayer === 2) {
-                        return { ...cell.id, isPlayer2: 1 };
+                        return { ...cell, isPlayer2: 1 };
                     }
                     else {
                         return cell;
                     }
                 }),
             };
+        case Action.CheckBoard:
+            console.log("check board");
+            let checkVert = vertical(state);
+            let checkHor = horizontal(state);
+            let checkDiag = diagonal(state);
+            if (checkVert === 1 || checkHor === 1 || checkDiag === 1) {
+                console.log("player 1 wins");
+            } else if (checkVert === 2 || checkHor === 2 || checkDiag === 2) {
+                console.log("player 2 wins");
+            }
+            return state;
         default:
             return state;
     }
