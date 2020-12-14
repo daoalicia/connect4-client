@@ -17,6 +17,7 @@ function reducer(state = initialState, action) {
             console.trace();
             return {
                 ...state,
+                // this is just for updating the databasw
                 cells: state.cells.map(cell => {
                     if (cell.colNum === action.payload.cell.colNum && action.payload.currPlayer === 1) {
                         return {...cell.id, isPlayer1: 1};
