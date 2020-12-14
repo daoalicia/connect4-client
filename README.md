@@ -28,7 +28,7 @@ Our app has a back-end data store and web service. The database has a clean sche
 
 ## Networking
 
-The web service supports CORS. The client is served at port 443 and port 80 redirects to port 443.
+The web service supports CORS. The client is served at port 443 and port 80 redirects to port 443. A process manager (pm2) is used to keep the service running.
 
 ## Technical Soundness
 
