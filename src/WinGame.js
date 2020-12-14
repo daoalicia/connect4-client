@@ -6,7 +6,7 @@ export function WinGame(props) {
     const history = useHistory();
 
     const startNewGame = () => {
-        history.push(`/new`);
+        history.push('/new');
         window.location.reload();
     };
 

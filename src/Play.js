@@ -10,7 +10,7 @@ export function Play(props) {
     const history = useHistory();
 
     const endGame = () => {
-        history.push(`/new`);
+        history.push('/new');
         window.location.reload();
     };
 
