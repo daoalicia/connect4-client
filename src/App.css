@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 .App {
   display: flex;
   flex-direction: column;
@@ -10,23 +9,32 @@
   height: 100vh;
 }
 
+.game {
+  width: 400px;
+  height: 400px;
+  height: 100vh;
+}
+
 #root {
-  width:auto;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .board {
   display: grid;
-  grid-template-columns:repeat(7, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   padding: 5px;
   margin-bottom: 10px;
   background-color: cornflowerblue;
+  width: 400px;
+  height: 400px;
 }
 
 .cell {
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   cursor: pointer;
   border-radius: 5em;
   background-color: white;
@@ -60,7 +68,7 @@ li {
   color: white;
 }
 
-#game-mode > label {
+#game-mode>label {
   margin-left: 3px;
   padding-right: 10px;
 }
@@ -71,7 +79,7 @@ li {
   flex-direction: column;
 }
 
-.player-info > input[type="text"] {
+.player-info>input[type="text"] {
   margin-right: 3px;
   padding-left: 10px;
 }
@@ -88,7 +96,7 @@ li {
 }
 
 .decor {
-  background-color: #C34A36; 
+  background-color: #C34A36;
   border: none;
   border-radius: 2em;
   color: white;
@@ -97,6 +105,10 @@ li {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+button:disabled {
+  background-color: #B0A8B9;
 }
 
 input, label {
@@ -116,4 +128,63 @@ h1 {
 img {
   width: 80px;
   height: 80px;
+}
+
+/********************* MEDIA QUERY - 620 ****************/
+
+@media only screen and (min-width:620px) {
+  .board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: cornflowerblue;
+    width: 400px;
+    height: 400px;
+    margin-left: 100px;
+  }
+  .cell {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 5em;
+    background-color: white;
+  }
+  .game {
+    width: 600px;
+    height: 600px;
+    height: 100vh;
+  }
+}
+
+/********************* MEDIA QUERY - 900 ****************/
+
+@media only screen and (min-width:900px) {
+  .board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: cornflowerblue;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    margin-left: 42.5px;
+    margin-top: 10px;
+  }
+  .cell {
+    height: 65px;
+    width: 65px;
+    cursor: pointer;
+    border-radius: 5em;
+    background-color: white;
+  }
+  .game {
+    width: 600px;
+    height: 600px;
+    height: 100vh;
+  }
 }
