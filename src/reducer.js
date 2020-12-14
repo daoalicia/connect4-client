@@ -12,11 +12,19 @@ function reducer(state = initialState, action) {
                 cells: action.payload,
             };
         case Action.MakeMove:
-            //console.log("make a move");
+            console.log(action.payload.currPlayer);
+            console.log(action.payload.currPlayer === 1);
+            console.trace();
             return {
                 ...state,
                 cells: state.cells.map(cell => {
-                    return cell;
+                    if (cell.colNum === action.payload.cell.colNum && action.payload.currPlayer === 1) {
+                        return {...cell.id, isPlayer1: 1};
+                    } else if (cell.id === action.payload.cell.id && action.payload.currPlayer === 2) {
+                        return {...cell.id, isPlayer2: 1};
+                    } else {
+                        return cell;
+                    }
                 }),
             };
         default:

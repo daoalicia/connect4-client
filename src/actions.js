@@ -10,10 +10,10 @@ export function loadCellInfo(cell) {
     };
 }
 
-export function makeMove(cell) {
+export function makeMove(cell, currPlayer) {
     return {
         type: Action.MakeMove,
-        payload: cell,
+        payload:{cell, currPlayer},
     };
 }
 
@@ -34,7 +34,6 @@ export function loadTable() {
         .then(data => {
             if (data.ok) {
                 dispatch(loadCellInfo(data.board));
-                console.log(data)
             }
         })
         .catch(e => console.error(e));

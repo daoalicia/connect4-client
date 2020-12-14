@@ -6,11 +6,12 @@
   align-items: center;
 }
 
-#board {
+.board {
   display: grid;
   grid-template-columns:repeat(7, 1fr);
   gap: 5px;
   padding: 5px;
+  margin-bottom: 10px;
   background-color: cornflowerblue;
 }
 
@@ -22,9 +23,30 @@
   background-color: white;
 }
 
-.isPlayer1 {
-  background-color: brown;
+.player1 {
+  background-color: red;
 }
 
+.player2 {
+  background-color: yellow;
+}
 
+#game-mode {
+  padding-bottom: 10px;
+}
 
+#game-mode > label {
+  margin-left: 3px;
+  padding-right: 10px;
+}
+
+.player-info {
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-info > input[type="text"] {
+  margin-right: 3px;
+  padding-left: 10px;
+}
