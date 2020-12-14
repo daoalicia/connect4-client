@@ -15,7 +15,7 @@ export function WinGame(props) {
         <React.Fragment>
             <h1>Connect 4 Game</h1>
             <h2>{winner} wins!</h2>
-            <button onClick={startNewGame}>Start New Game</button>
+            <button className="decor" onClick={startNewGame}>Start New Game</button>
         </React.Fragment>
     );
 }

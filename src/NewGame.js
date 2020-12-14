@@ -26,6 +26,7 @@ export function NewGame(props) {
 
     return (
         <React.Fragment>
+            <div className="newGame">
             <h1>Connect4 Game </h1>
             <div id="game-mode">
                 <img src="/images/joystick.png" />
@@ -40,9 +41,10 @@ export function NewGame(props) {
                     <label for="multi">Multi Player (local)</label>
                 </div>
             </div>
-            {gameMode ? null : <div className="player-info"><div><label for="player1"  className="orange label2">Player 1 Name: </label><input type="text" id="player1" onChange={event => setPlayer1Name(event.target.value)}></input></div>
-                <div><label for="player2" className="orange label2">Player 2 Name: </label><input type="text" id="player2" onChange={event => setPlayer2Name(event.target.value)}></input></div></div>}
+            {gameMode ? null : <div className="player-info"><div className="play1-info"><label for="player1"  className="orange label2">Player 1 Name: </label><input type="text" id="player1" onChange={event => setPlayer1Name(event.target.value)}></input></div>
+                <div className="play2-info"><label for="player2" className="orange label2">Player 2 Name: </label><input type="text" id="player2" onChange={event => setPlayer2Name(event.target.value)}></input></div></div>}
             <button onClick={startNewGame} disabled={disableButton} className="decor">Start New Game</button>
+            </div>
         </React.Fragment>
     );
 }

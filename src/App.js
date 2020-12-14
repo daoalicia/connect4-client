@@ -56,10 +56,14 @@ function App() {
               <div className="game">
                 <h1>Connect 4 Game</h1>
                 <h3>Current Turn: {playerName}</h3>
-                <div id="instructions">To make a move, click on a white circle in the column you want to drop your token.</div>
+                <div id="instructions"><p>To make a move, click on a white circle in the column you want to drop your token.</p></div>
                 <div id="play" onClick={togglePlayer}>
                   <Play cell={cells} player={player} />
                 </div>
+                <footer>
+                  <p>Copyright &#169; 2020 - Connect4 by Alicia Dao and Susie Nguyen. All Rights Reserved.</p>
+                  <p>Icons made by <a href="https://www.flaticon.com/authors/mynamepong" title="mynamepong">mynamepong</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+                  </footer>
               </div>
             );
           }} />

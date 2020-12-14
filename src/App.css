@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -6,10 +15,25 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #FFC55E;
+}
+
+body {
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #FFC55E;
 }
 
 .game {
   height: 100vh;
+}
+
+.container-board {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .board {
@@ -19,13 +43,19 @@
   padding: 5px;
   margin-bottom: 10px;
   background-color: cornflowerblue;
-  width: 600px;
-  height: 600px;
+  width: 350px;
+  height: 350px;
+}
+
+p {
+  font-family: 'Varela Round', sans-serif;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .cell {
-  height: 70px;
-  width: 70px;
+  height: 40px;
+  width: 40px;
   cursor: pointer;
   border-radius: 5em;
   background-color: white;
@@ -55,6 +85,15 @@
   background-color: #383856;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 li {
   color: white;
 }
@@ -64,15 +103,27 @@ li {
   padding-right: 10px;
 }
 
+footer {
+  background-color: #fff2b3;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  width: 100vw;
+}
+
 .player-info {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .player-info>input[type="text"] {
   margin-right: 3px;
   padding-left: 10px;
+}
+
+.play1-info {
+  margin-bottom: 15px;
 }
 
 .button-r {
@@ -81,7 +132,6 @@ li {
   border-radius: 2em;
   background-color: #202033;
 }
-
 .orange {
   color: #d1513b;
 }
@@ -96,6 +146,8 @@ li {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 button:disabled {
@@ -122,5 +174,49 @@ img {
   height: 80px;
 }
 
+/********************* MEDIA QUERY - 620 ****************/
+@media only screen and (min-width:620px) {
+  .board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: cornflowerblue;
+    width: 600px;
+    height: 600px;
+  }
 
+  .cell {
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 5em;
+    background-color: white;
+  }
+  
+  .player1 {
+    background-color: red;
+  }
+  
+  .player2 {
+    background-color: yellow;
+  }
+
+}
+
+/********************* MEDIA QUERY - 900 ****************/
+@media only screen and (min-width:900px) {
+  .board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: cornflowerblue;
+    width: 600px;
+    height: 600px;
+  }
+
+}
 

@@ -16,10 +16,12 @@ export function Play(props) {
 
     return (
         <React.Fragment>
-            <div className="board">
-                {cells.map(cell => <Cell key={cell.id} cell={cell} player={currPlayer} />)}
+            <div className="container-board">
+                <div className="board">
+                    {cells.map(cell => <Cell key={cell.id} cell={cell} player={currPlayer} />)}
+                </div>
+                <button className="decor" onClick={endGame}>End Game</button>
             </div>
-            <button onClick={endGame}>End Game</button>
         </React.Fragment>
     );
 }
