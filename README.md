@@ -28,40 +28,14 @@ Our app has a back-end data store and web service. The database has a clean sche
 
 ## Networking
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The web service supports CORS. The client is served at port 443 and port 80 redirects to port 443.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technical Soundness
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The source code is readable with consistent style and formatting, along with meaningful variable names and occassional comments to describe our logic. There has been a steady flow of commits to Git within this past week.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Known Errors
 
-## Learn More
+Clicking on any part of the board on the client side, will trigger the player turn to switch (won't drop a token though). This is why we specify clicking on a white cell to make a move in the instructions.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+We really tried to get the web service / back-end working on HTTPS with the SSL certificate. However, we were unsuccessful in this despite retrying on both our droplets multiple times. Due to this, the secured front-end webpage will not retrieve the back-end's database queries due to a mismatch (HTTP vs HTTPS). Our app works perfectly on local though by running npm start in the connect4-client directory.
