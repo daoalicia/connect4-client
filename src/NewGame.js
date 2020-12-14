@@ -26,20 +26,23 @@ export function NewGame(props) {
 
     return (
         <React.Fragment>
-            <h1>Connect 4 Game</h1>
+            <h1>Connect4 Game </h1>
             <div id="game-mode">
+                <img src="/images/joystick.png" />
                 <ul id="game-mode-desc">
                     <li><b>single player mode:</b> play against yourself.</li>
                     <li><b>multi player mode:</b> play against a friend on the same computer.</li>
                 </ul>
-                <input type="radio" id="single" name="game-type" value="single" onClick={single}></input>
-                <label for="single">Single Player</label>
-                <input type="radio" id="single" name="game-type" value="multi" onClick={multi}></input>
-                <label for="multi">Multi Player (local)</label>
+                <div className="button-r">
+                    <input type="radio" id="single" name="game-type" value="single" onClick={single}></input>
+                    <label for="single">Single Player</label>
+                    <input type="radio" id="single" name="game-type" value="multi" onClick={multi}></input>
+                    <label for="multi">Multi Player (local)</label>
+                </div>
             </div>
-            {gameMode ? null : <div className="player-info"><div><label for="player1">Player 1 Name: </label><input type="text" id="player1" onChange={event => setPlayer1Name(event.target.value)}></input></div>
-                <div><label for="player2">Player 2 Name: </label><input type="text" id="player2" onChange={event => setPlayer2Name(event.target.value)}></input></div></div>}
-            <button onClick={startNewGame} disabled={disableButton}>Start New Game</button>
+            {gameMode ? null : <div className="player-info"><div><label for="player1"  className="orange label2">Player 1 Name: </label><input type="text" id="player1" onChange={event => setPlayer1Name(event.target.value)}></input></div>
+                <div><label for="player2" className="orange label2">Player 2 Name: </label><input type="text" id="player2" onChange={event => setPlayer2Name(event.target.value)}></input></div></div>}
+            <button onClick={startNewGame} disabled={disableButton} className="decor">Start New Game</button>
         </React.Fragment>
     );
 }
